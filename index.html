@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacri Vultus | Holy Face Devotion Group</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<!-- floating chatbot -->
+<div class="chat-widget-container">
+    <div class="chat-box" id="chatBox"> 
+        <div class="chat-header"> 
+            <h3>Sacri Vultus Assistant</h3>  
+             <button class="chat-close-btn" id="chatCloseBtn">&times;</button>
+        </div>
+       
+
+
+    <div class="chat-messages" id="chatMessages"> 
+        <div class="chat-msg bot"> Pax Christi! Welcome to the Sacri Vultus group. How can I assist you with our gatherings, devotions, or history today? 
+
+        </div> 
+    </div>
+
+    <form class="chat-input-area" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Ask a question..." required autocomplete="off">
+      <button type="submit" class="chat-send-btn">Send</button>
+    </form>
+    </div>
+
+    <button class="chat-toggle-btn" id="chatToggleBtn" aria-label="Open Chat">
+    💬
+  </button>
+
+
+
+</div>
+<!-- end floating chatboat -->
+
+<body>
+<header> 
+    <nav> 
+        <div class="nav-logo">Sacri Vultus</div> 
+        <ul class="nav-links"> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="#gatherings">Gatherings</a></li> 
+            <li><a href="signup.html">Join Us</a></li>
+            <li><a href="faq.html">FAQ</a></li>  
+        </ul> 
+    </nav> 
+</header>
+
+<section section class="hero">
+    <div class="hero-content"> 
+        <h1>Devotion to the Holy Face of Christ</h1> 
+        <p class="latin-subtitle">"Vera Effigies Sacri Vultus Domini Nostri Jesu Christi..."</p> 
+        <p class="hero-text"> Welcome to our local meetup group dedicated to quiet contemplation, reparative prayer, and theological exploration of the Veil of Veronica and the Holy Face of Our Savior. </p> 
+        <div class="cta-group"> 
+            <a class="btn btn-primary" href="signup.html">Join Next Gathering</a> 
+            <!-- <a class="btn btn-secondary" href="symbolism.html">Explore Iconography</a>  -->
+        </div> 
+    </div>
+
+    <!-- <div class="hero-image-frame"> 
+        <div class="hero-image-placeholder"> 
+            <h3>[ Holy Face Relic Effigy ]</h3> 
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"> 
+                Displaying the reproduction touched to the Veil of Veronica in St. Peter's Basilica </p> 
+        </div> 
+            <div class="wax-seal-badge">ROMA<br />SEAL
+            </div> 
+    </div> -->
+   <img src="holyface.jpeg" alt="Holy Face of Christ - Veil of Veronica" class="hero-img">
+</section>
+
+<section class="section-container" id="gatherings">
+    <h2 class="section-divider-title section-title">Our Devotional Life</h2> 
+    <div class="section-divider"></div>
+    
+    <div class="card-grid"> 
+        <div class="card"> 
+            <div class="card-icon"><img src="stmichael2.jpg" class="card-img"></div> 
+            <h3>Daily Prayer</h3> 
+            <p>We pray the Holy Rosary every day. It's our main spiritual weapon and the foundation of our spiritual lives. We pray the daily Holy Face prayers, "Lord show us thy face and we shall be saved." Followed by an Our Father, Haily Mary, and Glory be...</p>
+            <a href="https://www.martinians.org/confraternity">Holy Rosary confraternity</a>
+            
+        </div>
+
+        <div class="card"> 
+            <div class="card-icon"><img src="stmartin.jpg" class="card-img"></div> 
+            <h3>Relic History & Study</h3> 
+            <p>We are members of the League of St. Matrin. We explore the historical lineage of St. Veronica's Veil, the saints of the Holy Face, and its significance to our times.
+
+            </p>
+            <a href="https://www.martinians.org/">League of St. Martin</a>
+        </div>
+
+        <div class="card"> 
+            <div class="card-icon"><img src="stveronica.jpg" class="card-img"></div> 
+            <h3>Fellowship</h3> 
+            <p>Connecting with fellow catholics who share the same devotion to the Holy Face and are committed to prayers of reparation, spiritual growth, and sacred tradition.</p>
+            <a href="https://www.martinians.org/archconfraternity-1">Holy Face archconfraternity</a> 
+        </div>
+
+     
+    </div>
+    
+
+</section>
+
+<footer class="footer-inscription"> 
+    <p> "Vera Effigies Sacri Vultus Domini Nostri Jesu Christi quæ Romæ in Sacrosancta Basilica S. Petri in Vaticano religiosissime observatur et colitur" </p> 
+    <p>© 2026 Sacri Vultus Meetup Group. Dedicated to the Holy Face of Christ.</p> 
+</footer>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => { 
+        const chatToggleBtn = document.getElementById('chatToggleBtn'); 
+        const chatCloseBtn = document.getElementById('chatCloseBtn'); 
+        const chatBox = document.getElementById('chatBox'); 
+        const chatForm = document.getElementById('chatForm'); 
+        const chatInput = document.getElementById('chatInput'); 
+        const chatMessages = document.getElementById('chatMessages');
+
+        chatToggleBtn.addEventListener('click', () => chatBox.classList.toggle('open')); 
+        chatCloseBtn.addEventListener('click', () => chatBox.classList.remove('open'));
+
+        function appendMessage(text, sender) { 
+            const msgDiv = document.createElement('div'); 
+            msgDiv.classList.add('chat-msg', sender); 
+            msgDiv.textContent = text; chatMessages.appendChild(msgDiv); 
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to bottom 
+        }
+
+        const KNOWLEDGE_BASE = [ 
+            { 
+                keywords: ['when', 'time', 'meet', 'gathering', 'schedule', 'hours'], 
+                response: "We meet monthly usually on the first or last week in the evening for prayers of reparation, and fellowship. Detailed schedules are sent directly to your inbox after you complete our sign-up form."
+            }, 
+            { 
+                keywords: ['join', 'signup', 'register', 'member', 'form', 'contact', 'email'], 
+                response: "You can join our group by filling out the form on our Join Us Page Once submitted, you'll automatically receive a welcome email with our group details!" 
+
+            },
+            {
+                keywords: ['focus', 'purpose', 'about', 'do', 'mission', 'activities', 'what is'], 
+                response: "Our group is dedicated to quiet contemplation, prayers of reparation, and historical study surrounding the Holy Face of Christ and the Veil of Veronica. Gatherings include: d prayer Recitation of the Chaplet of the Holy Face Discussions on sacred art, iconography, and sacred tradition"
+            },
+            {
+                keywords: ['knowledge', 'prior', 'experience', 'theology', 'beginner', 'require', 'who can join', 'welcome'], 
+                response: "No prior theological knowledge is required! Every catholic interested in this devotion and spiritual reflection, church history, or sacred tradition is warmly welcome to attend our gatherings."
+            },
+            {
+                keywords: ['how often', 'where', 'location', 'frequency', 'online', 'dial', 'virtual', 'zoom', 'meeting place'], 
+                response: "We meet monthly usually in the evening. Specific venue locations are sent directly via email after completing our Sign-Up Form by clicking the Join Us tab."
+            },
+            {
+                keywords: ['latin', 'inscription', 'meaning', 'vera effigies', 'text', 'translation'], 
+                response: "The Latin text on the sacred effigy reads: Vera Effigies Sacri Vultus Domini Nostri Jesu Christi...This translates to True Effigy of the Sacred Face of Our Lord Jesus Christ, attesting to the print's formal connection to the relic preserved in St. Peter's Basilica in Rome."
+            },
+            {
+                keywords: ['relic', '3rd class', 'third class', 'touch', 'touched', 'wax', 'seal', 'vatican'], 
+                response: "The historical prints were physically touched to the original relic of Veronica's Veil in Rome and marked with an official red wax seal, creating a third-class relic tradition maintained by the Vatican."
+            },
+            {
+                keywords: ['how long', 'been', 'founded', 'started'],
+                response: "This group was started in 2023, under the League of St. Martin."
+            }
+            
+        ]
+
+        function getBotResponse(userMsg) {
+            const lowerMsg = userMsg.toLowerCase();
+
+            for (const item of KNOWLEDGE_BASE) { 
+                if (item.keywords && item.keywords.length > 0) { 
+                    const hasMatch = item.keywords.some(keyword => lowerMsg.includes(keyword)); 
+                    if (hasMatch) { 
+                        return item.response;
+                    } 
+                }
+             }
+
+             const defaultEntry = KNOWLEDGE_BASE.find(item => !item.keywords || item.keywords.length === 0);
+             return defaultEntry ? defaultEntry.response : "Pax Christi! How can I assist you today?";
+        }
+
+        // function getBotResponse(userMsg) { 
+        //     const lower = userMsg.toLowerCase(); 
+        //     if (lower.includes('when') || lower.includes('time') || lower.includes('meet') || lower.includes('gathering')) { 
+        //         return "We meet weekly on Tuesday evenings for silent contemplation and prayers of reparation. Detailed schedules are sent after you sign up!"; 
+        //     } else if (lower.includes('join') || lower.includes('signup') || lower.includes('register')) { 
+        //         return "You can join our group by filling out the form on our 'Join Us' page. A welcome email will be sent directly to your inbox!"; 
+        //     } else if (lower.includes('relic') || lower.includes('veil') || lower.includes('veronica') || lower.includes('history')) { 
+        //         return "The Sacri Vultus effigy represents the Veil of Veronica (Sudarium) preserved in St. Peter's Basilica in Rome. Visit our Symbolism page to read about the iconography!"; 
+        //     } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('pax')) {                 
+        //         return "Pax Christi! How can I help you today?";
+        //     } else { 
+        //         return "Thank you for reaching out! For specific inquiries, please submit a request on our 'Join Us' page or ask about our meeting times, history, or devotions.";
+        //     } 
+        // }
+    
+
+        chatForm.addEventListener('submit', (e) => {
+             e.preventDefault(); 
+             const userText = chatInput.value.trim(); 
+             if (!userText) return; // Render user message 
+             appendMessage(userText, 'user'); chatInput.value = ''; 
+             setTimeout(() => { 
+                const reply = getBotResponse(userText); 
+                appendMessage(reply, 'bot'); }, 400); 
+            }); 
+        });  
+
+
+</script>
+
+
+
+
+
+</body>
